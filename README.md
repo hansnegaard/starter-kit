@@ -30,9 +30,9 @@ winget install -e --id Microsoft.VisualStudioCode
 ```
 
 ## Node (portable, into your user folder)
-Paste this one line, then open a **new** PowerShell window.
+Works in the current window — no reopen needed.
 ```powershell
-$v="v22.11.0"; iwr "https://nodejs.org/dist/$v/node-$v-win-x64.zip" -OutFile "$env:TEMP\node.zip"; Expand-Archive "$env:TEMP\node.zip" "$env:USERPROFILE" -Force; [Environment]::SetEnvironmentVariable("Path","$env:USERPROFILE\node-$v-win-x64;"+[Environment]::GetEnvironmentVariable("Path","User"),"User")
+$v="v22.11.0"; iwr "https://nodejs.org/dist/$v/node-$v-win-x64.zip" -OutFile "$env:TEMP\node.zip"; Expand-Archive "$env:TEMP\node.zip" "$env:USERPROFILE" -Force; $nd="$env:USERPROFILE\node-$v-win-x64"; [Environment]::SetEnvironmentVariable("Path","$nd;"+[Environment]::GetEnvironmentVariable("Path","User"),"User"); $env:Path="$nd;$env:Path"; node -v
 ```
 
 ## Verify (open a new PowerShell)
