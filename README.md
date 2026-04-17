@@ -49,8 +49,11 @@ npm --version
 ```
 
 ## Claude Code
+Claude Code on Windows needs `bash.exe` from Git for Windows (installed above).
 ```powershell
 npm install -g @anthropic-ai/claude-code
+[Environment]::SetEnvironmentVariable("CLAUDE_CODE_GIT_BASH_PATH","C:\Program Files\Git\bin\bash.exe","User")
+$env:CLAUDE_CODE_GIT_BASH_PATH="C:\Program Files\Git\bin\bash.exe"
 claude
 ```
 
