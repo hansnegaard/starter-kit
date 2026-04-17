@@ -3,6 +3,11 @@
 ## Open PowerShell
 Press `Win`, type `powershell`, and hit `Enter`.
 
+## Allow npm scripts to run (one-time)
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
+```
+
 ## Discord
 ```powershell
 winget install -e --id Discord.Discord
