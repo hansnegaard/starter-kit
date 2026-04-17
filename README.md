@@ -29,18 +29,10 @@ gh auth login
 winget install -e --id Microsoft.VisualStudioCode
 ```
 
-## Node (portable)
+## Node (portable, into your user folder)
+Paste this one line, then open a **new** PowerShell window.
 ```powershell
-$ver  = "v22.11.0"                     # set latest LTS from https://nodejs.org/dist
-$root = "$env:USERPROFILE\node"
-$zip  = "$env:TEMP\node.zip"
-
-Invoke-WebRequest "https://nodejs.org/dist/$ver/node-$ver-win-x64.zip" -OutFile $zip
-Expand-Archive $zip -DestinationPath $root -Force
-
-$nodeDir = "$root\node-$ver-win-x64"
-$userPath = [Environment]::GetEnvironmentVariable("Path", "User")
-[Environment]::SetEnvironmentVariable("Path", "$nodeDir;$userPath", "User")
+$v="v22.11.0"; iwr "https://nodejs.org/dist/$v/node-$v-win-x64.zip" -OutFile "$env:TEMP\node.zip"; Expand-Archive "$env:TEMP\node.zip" "$env:USERPROFILE" -Force; [Environment]::SetEnvironmentVariable("Path","$env:USERPROFILE\node-$v-win-x64;"+[Environment]::GetEnvironmentVariable("Path","User"),"User")
 ```
 
 ## Verify (open a new PowerShell)
