@@ -27,9 +27,11 @@ Close and reopen PowerShell.
 
 ## 3. Claude Code
 ```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 npm install -g @anthropic-ai/claude-code
 claude
 ```
+(The first line lets PowerShell run `npm.ps1` — fixes `running scripts is disabled on this system`. Scoped to your user, no admin.)
 
 ---
 
